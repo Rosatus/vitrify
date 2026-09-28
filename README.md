@@ -1,4 +1,4 @@
-# glass
+# vitrify
 
 Bake a Nebula-terminal-style wallpaper into a single image that reproduces the
 same look — dimmed fit, frosted grain, chrome scrim — in **any** terminal that
@@ -14,8 +14,8 @@ optional static frost). The full derivation spec lives in
 
 ```bash
 uv sync                       # deps: Pillow only
-uv run glass --help           # or: uv run python -m glass
-pipx install .                # or `pip install .` for a `glass` command
+uv run vitrify --help         # or: uv run python -m vitrify
+pipx install .                # or `pip install .` for a `vitrify` command
 uv run python -m unittest discover -s tests   # run the test suite
 ```
 
@@ -24,23 +24,23 @@ uv run python -m unittest discover -s tests   # run the test suite
 ```bash
 # Adaptive (recommended): keep alpha — the image fades toward the terminal's
 # OWN background color, so one PNG works across themes and terminals
-uv run glass -i wall.jpg -o bg.png --preserve-alpha
+uv run vitrify -i wall.jpg -o bg.png --preserve-alpha
 
 # Opaque bake: fade toward a fixed theme color (default #2e3440 = Nebula's
 # stock Nord terminal background)
-uv run glass -i wall.jpg -o bg.png --bg "#2e3440" --image-opacity 0.38
+uv run vitrify -i wall.jpg -o bg.png --bg "#2e3440" --image-opacity 0.38
 
 # Crop a 4:3 source to 16:9 at full resolution
-uv run glass -i wall.jpg -o bg.png --aspect 16:9 --preserve-alpha
+uv run vitrify -i wall.jpg -o bg.png --aspect 16:9 --preserve-alpha
 
 # Exact canvas when you want pixel-perfect control (fit/alignment apply here)
-uv run glass -i wall.jpg -o bg.png --size 1920x1080 --fit cover
+uv run vitrify -i wall.jpg -o bg.png --size 1920x1080 --fit cover
 
 # Nebula cover-chrome look: wallpaper under a translucent shell scrim
-uv run glass -i wall.jpg -o bg.png --preset nebula-cover --window-opacity 0.8
+uv run vitrify -i wall.jpg -o bg.png --preset nebula-cover --window-opacity 0.8
 
 # Frosted texture on the image itself (blur + white tint + LCG grain)
-uv run glass -i wall.jpg -o bg.png --preset nebula-glass --image-opacity 1.0
+uv run vitrify -i wall.jpg -o bg.png --preset nebula-glass --image-opacity 1.0
 ```
 
 On the terminal side, set the image layout to *fill/stretch/cover* and leave
@@ -112,10 +112,10 @@ AGPL-3.0-or-later — see [LICENSE](LICENSE).
 背景的终端即复刻同款观感，无需逐软件调参。
 
 ```bash
-uv run glass -i 原图 -o out.png --preserve-alpha   # 推荐：alpha 自适应终端底色
-uv run glass -i 原图 -o out.png --bg "#2e3440"      # 保守：不透明烘焙(Nord 底色)
-uv run glass -i 原图 -o out.png --aspect 16:9       # 按目标比例裁剪
-uv run glass -i 原图 -o out.png --preset nebula-glass  # 磨砂质感
+uv run vitrify -i 原图 -o out.png --preserve-alpha   # 推荐：alpha 自适应终端底色
+uv run vitrify -i 原图 -o out.png --bg "#2e3440"      # 保守：不透明烘焙(Nord 底色)
+uv run vitrify -i 原图 -o out.png --aspect 16:9       # 按目标比例裁剪
+uv run vitrify -i 原图 -o out.png --preset nebula-glass  # 磨砂质感
 ```
 
 终端侧把背景图设为 fill/stretch，透明度与 tint 参数留默认即可。完整提炼

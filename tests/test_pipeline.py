@@ -4,7 +4,7 @@ import unittest
 
 from PIL import Image
 
-from glass.pipeline import (
+from vitrify.pipeline import (
     NOISE_ALPHA,
     Alignment,
     Bounds,
@@ -124,7 +124,7 @@ class CompositeTests(unittest.TestCase):
         self.assertEqual(out.getpixel((0, 2))[3], 0)
 
     def test_default_canvas_follows_layout_and_aspect_crops(self):
-        from glass.pipeline import canvas_size
+        from vitrify.pipeline import canvas_size
 
         params = Params()
         self.assertEqual(canvas_size(params, 1600, 900), (1600, 900))

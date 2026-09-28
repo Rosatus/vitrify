@@ -1,4 +1,4 @@
-"""glass — bake a Nebula-style wallpaper into a single image file.
+"""vitrify — bake a Nebula-style wallpaper into a single image file.
 
 Produces one PNG/JPEG that already contains fit/alignment, opacity blending,
 the frosted-glass recipe and the chrome scrim — so any terminal that can set
@@ -63,7 +63,7 @@ def _aspect(text: str) -> tuple[int, int]:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="glass",
+        prog="vitrify",
         description="Bake a Nebula-style wallpaper into one image for any terminal.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
@@ -190,7 +190,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         params = resolve_params(args)
     except ValueError as exc:
-        print(f"glass: {exc}", file=sys.stderr)
+        print(f"vitrify: {exc}", file=sys.stderr)
         return 2
 
     if args.print_params:
@@ -204,11 +204,11 @@ def main(argv: list[str] | None = None) -> int:
     try:
         report = process(args.input, args.output, params, fmt, args.jpeg_quality)
     except (ValueError, OSError, UnidentifiedImageError) as exc:
-        print(f"glass: {exc}", file=sys.stderr)
+        print(f"vitrify: {exc}", file=sys.stderr)
         return 1
 
     print(
-        f"glass: {report['texture'][0]}x{report['texture'][1]} texture "
+        f"vitrify: {report['texture'][0]}x{report['texture'][1]} texture "
         f"(layout {report['layout'][0]}x{report['layout'][1]}) "
         f"→ {report['output'][0]}x{report['output'][1]} {report['path']}"
     )

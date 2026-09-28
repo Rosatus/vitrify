@@ -112,8 +112,8 @@ macOS `CGSSetWindowBackgroundBlurRadius(80)` / Wayland KWin blur。
 ## 6. 复刻到任意终端的推荐流程
 
 ```
-glass -i 原图 -o out.png --preserve-alpha        # 推荐：原图分辨率+alpha自适应
-glass -i 原图 -o out.png --bg "<终端主题底色>"    # 保守：不透明烘焙
+vitrify -i 原图 -o out.png --preserve-alpha      # 推荐：原图分辨率+alpha自适应
+vitrify -i 原图 -o out.png --bg "<终端主题底色>"  # 保守：不透明烘焙
 # 要裁到终端比例：--aspect 16:9；要像素级画布：--size WxH
 # 想要"磨砂图"观感：--preset nebula-glass（图自身模糊+噪点，与窗口模糊无关）
 ```
